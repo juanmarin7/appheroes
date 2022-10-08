@@ -13,13 +13,11 @@ import Heroe from "@/components/Heroe.vue";
 export default {
   methods: {
     clicBuscHeroe(buscar) {
-      var Buscar = buscar
+      var Buscar = buscar;
       console.log(Buscar);
     },
   },
-  computed: {
-    
-  },
+  computed: {},
   name: "ListadoHeroes",
   components: {
     BuscadorHeroe,

@@ -10,7 +10,6 @@
             class="form-control"
             placeholder="Buscar heroe"
           />
-          {{buscar}}
           <button
             class="btn btn-outline-secondary"
             type="button"
@@ -34,7 +33,7 @@ export default {
   props: {},
   methods: {
     recBuscar() {
-      this.$emit("paso", this.buscar);
+      this.$emit("pasoa", this.buscar);
     },
   },
 };
