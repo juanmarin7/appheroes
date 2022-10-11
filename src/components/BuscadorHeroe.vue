@@ -3,7 +3,7 @@
     <div class="row">
       <div class="input-group mb-3">
         <input
-          v-model="buscar"
+          v-model="inputData"
           type="text"
           class="form-control"
           placeholder="Buscar heroe"
@@ -12,7 +12,7 @@
           class="btn btn-outline-secondary"
           type="button"
           id="button-addon2"
-          @click="recBuscar"
+          @click="buscarH()"
         >
           Buscar
         </button>
@@ -23,13 +23,12 @@
 <script>
 export default {
   data: () => ({
-    buscar: "",
+    buscar: null,
   }),
   name: "BuscadorHeroe",
-  props: {},
   methods: {
-    recBuscar() {
-      this.$emit("paso", this.buscar);
+    buscarH() {
+      this.$emit("pasoBuscar", this.inputData);
     },
   },
 };
