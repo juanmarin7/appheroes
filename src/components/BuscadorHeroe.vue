@@ -12,7 +12,7 @@
           class="btn btn-outline-secondary"
           type="button"
           id="button-addon2"
-          @click="buscarH()"
+          @click="buscarH"
         >
           Buscar
         </button>
@@ -22,6 +22,12 @@
 </template>
 <script>
 export default {
+  props: {
+    busca: {
+      type: Object,
+      default: null,
+    },
+  },
   data: () => ({
     buscar: null,
   }),

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12">
         <h1>App heroes</h1>
-        <BuscadorHeroe @buscar="BuscHeroe($event)"></BuscadorHeroe>
+        <BuscadorHeroe @pasoBuscar="BuscHeroe"></BuscadorHeroe>
       </div>
       <div class="col-6">
         <button
@@ -66,7 +66,8 @@
               :heroe="h"
               :posicion="$index"
               @eliminar="EliminarH()"
-            ></Heroe>
+              >{{ h.poder }}</Heroe
+            >
           </div>
         </div>
       </div>
@@ -89,7 +90,8 @@ export default {
   data() {
     return {
       mostrar: false,
-      busca: null,
+      inputData: null,
+      buscar: null,
       id: null,
       name: null,
       poder: null,
@@ -122,14 +124,20 @@ export default {
   },
   computed: {
     filterH() {
-      if (!this.busca) {
-        return this.ListHeroes;
+      if (this.inputData) {
+        return this.ListHeroes.filter((heroe) => {
+          return heroe.name.toLowerCase().includes(this.inputData.toLowerCase());
+        });
       } else {
-        return this.heroe.filter((h) => h.poder == this.busca);
+        console.log("no entro");
+        return this.ListHeroes;
       }
     },
   },
   methods: {
+    BuscHeroe(inputData) {
+      console.log(inputData);
+    },
     guardarH() {
       console.log(this.id);
       if (this.id != null) {
@@ -148,9 +156,6 @@ export default {
         (this.poder = null),
         (this.URLimg = null);
     },
-    // BuscHeroe(inputData) {
-    //   this.busca = inputData;
-    // },
     EliminarH(posicion) {
       let elim = this.ListHeroes.indexOf(posicion);
       this.ListHeroes.splice(elim, 1);
